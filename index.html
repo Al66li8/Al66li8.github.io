@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubriendo Genios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .portada {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: #ff9800;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            z-index: 10;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .portada img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .portada h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .portada p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .portada button {
+            background: white;
+            color: #ff9800;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .portada button:hover {
+            background: #f4f4f4;
+        }
+
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        header {
+            background-color: #ff9800;
+            color: white;
+            padding: 20px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 80px;
+            height: auto;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .objetivo {
+            background-color: white;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .objetivo h2 {
+            color: #ff9800;
+            font-size: 24px;
+        }
+
+        .objetivo p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #ff9800;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .event {
+            position: relative;
+            background-color: white;
+            width: 45%;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .event img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .event:nth-child(odd) {
+            left: 0;
+        }
+
+        .event:nth-child(even) {
+            left: 55%;
+        }
+
+        .event h2 {
+            color: #ff9800;
+        }
+
+        .event::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff9800;
+            border-radius: 50%;
+            top: 20px;
+            left: 100%;
+            margin-left: -10px;
+        }
+
+        .event:nth-child(even)::before {
+            left: -10%;
+        }
+
+        .event .limitations, .event .solutions {
+            font-size: 14px;
+            color: #333;
+            background-color: #ffebcc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .event {
+                width: 90%;
+                left: 5% !important;
+            }
+            .event::before {
+                left: 50% !important;
+                margin-left: -10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portada" id="portada">
+        <img src="Imagen.jpg" alt="Logo Universidad Tres Culturas">
+        <h1>INGENIERÍA EN SISTEMAS COMPUTACIONALES</h1>
+        <p><strong>Plantel:</strong> Londres</p>
+        <p><strong>Materia:</strong> Ética y Responsabilidad Social</p>
+        <h2>Línea de Tiempo</h2>
+        <p><strong>Docente:</strong> Erika Maribel Arellano Orozco</p>
+        <p><strong>Alumnos:</strong> Feria García Isaac, Muciño Velazco Alexia Victoria</p>
+        <p><strong>Grupo:</strong> 7ZLEINSMA 2025-2</p>
+        <button onclick="ocultarPortada()">Ver Proyecto</button>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <img src="Imagen.jpg" alt="Logo Universidad Tres Culturas" class="logo">
+            <div>
+                <h1>Descubriendo Genios</h1>
+                <p>Un viaje en el tiempo sobre niños con altas capacidades intelectuales.</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="objetivo">
+        <h2>🎯 Objetivo del Proyecto</h2>
+        <p>Desarrollar una página web para brindar una herramienta que facilite a escuelas y padres en la identificación de niños con altas capacidades intelectuales, para resolver sus problemáticas personales, sociales y académicas.</p>
+    </div>
+
+    <div class="timeline">
+        <div class="event">
+            <h2>🕰 1980 - Sin reconocimiento</h2>
+            <p>Los niños con altas capacidades no eran identificados y enfrentaban problemas en la escuela.</p>
+            <div class="limitations">Limitaciones: Falta de estudios sobre el tema y ausencia de políticas educativas.</div>
+            <div class="solutions">Tecnologías: Métodos tradicionales sin herramientas digitales.</div>
+            <img src="Img1.jpg" alt="Niño confundido en la escuela">
+        </div>
+
+        <div class="event">
+            <h2>📚 1990 - Primeras iniciativas</h2>
+            <p>Se inician estudios en universidades mexicanas sobre el impacto de la alta capacidad.</p>
+            <div class="limitations">Limitaciones: Investigación limitada a entornos académicos sin aplicación práctica.</div>
+            <div class="solutions">Tecnologías: Primeros estudios en psicopedagogía.</div>
+            <img src="Img2.jpg" alt="Investigadores estudiando el tema">
+        </div>
+
+        <!-- Puedes seguir agregando más eventos aquí -->
+<div class="event">
+        <h2>🔍 1995 - Primeras investigaciones</h2>
+        <p>Se desarrollan pruebas en algunas escuelas para detectar niños con talento excepcional.</p>
+        <div class="limitations">Limitaciones: Falta de acceso a programas en zonas rurales.</div>
+        <div class="solutions">Aplicaciones: Test psicométricos básicos.</div>
+        <img src="Img3.jpg" alt="Investigación en la escuela">
+    </div>
+
+    <div class="event">
+        <h2>🏫 2000 - Primeros programas oficiales</h2>
+        <p>Se implementan programas de educación diferenciada para niños con altas capacidades.</p>
+        <div class="limitations">Limitaciones: Escasez de docentes capacitados.</div>
+        <div class="solutions">Aplicaciones: Primeros cursos en línea personalizados.</div>
+        <img src="Img4.jpg" alt="Niños en un aula especializada">
+    </div>
+
+    <div class="event">
+        <h2>📱 2010 - Plataformas digitales</h2>
+        <p>Se crean apps para identificar y apoyar a niños con altas capacidades.</p>
+        <div class="limitations">Limitaciones: Falta de personalización y alcance limitado.</div>
+        <div class="solutions">Aplicaciones: SmartGifted, Mensa Kids.</div>
+        <img src="Img5.png" alt="Niños aprendiendo con tecnología">
+    </div>
+
+    <div class="event">
+        <h2>🚀 2015 - Inteligencia Artificial en educación</h2>
+        <p>Se desarrollan plataformas basadas en IA para la identificación temprana.</p>
+        <div class="limitations">Limitaciones: Necesidad de mejoras en algoritmos de personalización.</div>
+        <div class="solutions">Aplicaciones: CogniKid, AI-Talent.</div>
+        <img src="Img6.jpg" alt="Inteligencia Artificial ayudando a niños">
+    </div>
+
+    <!-- Nuevos eventos agregados -->
+    <div class="event">
+        <h2>🧠 2018 - Avances en neurociencia</h2>
+        <p>Se realizan importantes descubrimientos en el campo de la neurociencia para comprender mejor el cerebro de los niños con altas capacidades.</p>
+        <div class="limitations">Limitaciones: Falta de comprensión completa sobre los mecanismos cerebrales en niños superdotados.</div>
+        <div class="solutions">Tecnologías: Investigación en neurociencia cognitiva, mejoras en pruebas de detección.</div>
+        <img src="Img8.jpeg" alt="Investigación en neurociencia">
+    </div>
+
+    <div class="event">
+        <h2>🌐 2020 - Programas educativos personalizados a gran escala</h2>
+        <p>Se implementan programas de educación personalizada basados en el análisis de datos y el aprendizaje automático para apoyar a niños con altas capacidades en todo el mundo.</p>
+        <div class="limitations">Limitaciones: Desigualdad en la distribución de recursos tecnológicos y falta de infraestructura en países en desarrollo.</div>
+        <div class="solutions">Aplicaciones: Plataformas de educación basadas en IA, tutorías virtuales personalizadas.</div>
+        <img src="Img10.jpg" alt="Niños utilizando plataformas personalizadas de aprendizaje">
+    </div>
+
+    <div class="event">
+        <h2>💡 2024 - Avances en el aprendizaje autodirigido</h2>
+        <p>Los niños con altas capacidades comienzan a desarrollar habilidades de aprendizaje autodirigido mediante el uso de herramientas de IA y recursos educativos interactivos.</p>
+        <div class="limitations">Limitaciones: Retos para motivar a los niños a usar plataformas de manera autónoma.</div>
+        <div class="solutions">Tecnologías: Plataformas de gamificación, herramientas interactivas de autoaprendizaje.</div>
+        <img src="Img9.jpg" alt="Niños aprendiendo de manera autónoma mediante tecnología">
+    </div>
+</div>
+     <!-- Sección de Fuentes Bibliográficas -->
+     <!-- Sección de Fuentes Bibliográficas -->
+     <div class="fuentes">
+        <h2>📚 Fuentes Bibliográficas</h2>
+        <ul>
+            <li>Cámara de Diputados de México. (s.f.). <i>Altas capacidades intelectuales: Sector poco reconocido en México</i>. Revista Pluralidad y Consenso. Recuperado el 3 de febrero de 2025, de <a href="https://comunicacionsocial.diputados.gob.mx/revista/index.php/pluralidad/altas-capacidades-intelectuales-sector-poco-reconocido-en-mexico-?utm_sourche" target="_blank">https://comunicacionsocial.diputados.gob.mx/...</a></li>
+
+            <li>Scielo México. (2018). <i>Las altas capacidades intelectuales en México: Un análisis desde la educación</i>. Recuperado el 3 de febrero de 2025, de <a href="https://www.scielo.org.mx/scielo.php?pid=S2448-85502018000200053&script=sci_arttext&utm_source" target="_blank">https://www.scielo.org.mx/...</a></li>
+
+            <li>Secretaría de Educación Pública (SEP). (s.f.). <i>Educación Especial en México</i>. Recuperado el 3 de febrero de 2025, de <a href="https://edicacionespecial.sep.gob.mx" target="_blank">https://edicacionespecial.sep.gob.mx</a></li>
+        </ul>
+    </div>
+
+    <style>
+        .fuentes {
+            background-color: white;
+            padding: 20px;
+            margin: 40px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .fuentes h2 {
+            color: #ff9800;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .fuentes ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .fuentes li {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .fuentes li i {
+            font-style: italic;
+        }
+
+        .fuentes a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+        .fuentes a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const events = document.querySelectorAll(".event");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.5 });
+
+        events.forEach(event => {
+            observer.observe(event);
+        });
+    });
+
+    function ocultarPortada() {
+        document.getElementById("portada").classList.add("hidden");
+    }
+</script>
+
+</body>
+</html>
